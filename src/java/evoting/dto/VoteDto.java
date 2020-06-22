@@ -7,34 +7,59 @@ package evoting.dto;
 
 /**
  *
- * @author vishal
+ * @author prashoo
  */
 public class VoteDto {
 
     private String candidateId;
     private String voterId;
 
+    /**
+     *
+     * @return
+     */
     public String getCandidateId() {
         return candidateId;
     }
 
+    /**
+     *
+     * @param candidateId
+     */
     public void setCandidateId(String candidateId) {
         this.candidateId = candidateId;
     }
 
+    /**
+     *
+     * @return
+     */
     public String getVoterId() {
         return voterId;
     }
 
+    /**
+     *
+     * @param voterId
+     */
     public void setVoterId(String voterId) {
         this.voterId = voterId;
     }
 
+    /**
+     *
+     * @return
+     */
     @Override
     public String toString() {
         return "VoteDto{" + "candidateId=" + candidateId + ", voterId=" + voterId + '}';
     }
 
+    /**
+     *
+     * @param candidateId
+     * @param voterId
+     */
     public VoteDto(String candidateId, String voterId) {
         this.candidateId = candidateId;
         this.voterId = voterId;

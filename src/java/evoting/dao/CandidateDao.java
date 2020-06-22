@@ -20,7 +20,7 @@ import java.util.Base64.Encoder;
 
 /**
  *
- * @author vishal
+ * @author prashoo
  */
 public class CandidateDao {
 
@@ -44,7 +44,13 @@ public class CandidateDao {
         }
     }
     
-    
+    /**
+     *
+     * @param candidate
+     * @return
+     * @throws SQLException
+     * @throws IOException
+     */
     public static boolean updateCandidate(AddCandidateDto candidate)throws SQLException,IOException{
         ps4.setString(1, candidate.getParty());
         ps4.setString(2, candidate.getCity());
@@ -54,11 +60,22 @@ public class CandidateDao {
         return (ps4.executeUpdate() != 0);
     }
 
+    /**
+     *
+     * @param cid
+     * @return
+     * @throws SQLException
+     */
     public static int deleteCandidateById(String cid)throws SQLException{
         ps3.setString(1,cid);
         return (ps3.executeUpdate());     
     }
     
+    /**
+     *
+     * @return
+     * @throws SQLException
+     */
     public static String getNewCandidateId() throws SQLException {
       ResultSet rs = st.executeQuery("select max(CANDIDATE_ID) from CANDIDATE");
         if (rs.next()) {
@@ -71,6 +88,12 @@ public class CandidateDao {
         
     }
 
+    /**
+     *
+     * @param uid
+     * @return
+     * @throws SQLException
+     */
     public static String getUserNameById(String uid) throws SQLException {
 
         ps.setString(1, uid);
@@ -83,6 +106,11 @@ public class CandidateDao {
         }
     }
 
+    /**
+     *
+     * @return
+     * @throws SQLException
+     */
     public static ArrayList<String> getCandidateId() throws SQLException {
         ResultSet rs = st3.executeQuery("select CANDIDATE_ID from CANDIDATE");
         ArrayList<String> id = new ArrayList<>();
@@ -92,6 +120,12 @@ public class CandidateDao {
         return id;
     }
 
+    /**
+     *
+     * @param cid
+     * @return
+     * @throws SQLException
+     */
     public static CandidateDetails getDetailsById(String cid) throws SQLException{
 
         ps2.setString(1, cid);
@@ -117,8 +151,11 @@ public class CandidateDao {
 
     }
     
-    
-
+    /**
+     *
+     * @return
+     * @throws SQLException
+     */
     public static ArrayList<String> getCity() throws SQLException {
 
         ResultSet rs = st2.executeQuery("select distinct CITY from USER_DETAILS");
@@ -132,6 +169,13 @@ public class CandidateDao {
         return cityList;
     }
 
+    /**
+     *
+     * @param candidate
+     * @return
+     * @throws SQLException
+     * @throws IOException
+     */
     public static boolean addCandidate(AddCandidateDto candidate) throws SQLException, IOException {
         System.out.println("candidate" + candidate.toString());
         ps1.setString(1, candidate.getCandidateId());

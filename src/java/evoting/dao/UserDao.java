@@ -20,7 +20,7 @@ import java.util.Base64;
 
 /**
  *
- * @author vishal
+ * @author prashoo
  */
 public class UserDao {
 
@@ -48,6 +48,12 @@ public class UserDao {
         }
     }
 
+    /**
+     *
+     * @param user
+     * @return
+     * @throws SQLException
+     */
     public static boolean updateUser(UserDetails user) throws SQLException {
         ps4.setString(1, user.getUsername());
         ps4.setString(2, user.getAddress());
@@ -59,6 +65,12 @@ public class UserDao {
         return (ps4.executeUpdate()!=0);
     }
 
+    /**
+     *
+     * @param uid
+     * @return
+     * @throws SQLException
+     */
     public static UserDetails getUserDetailsById(String uid) throws SQLException {
         ps3.setString(1, uid);
         ResultSet rs = ps3.executeQuery();
@@ -76,12 +88,23 @@ public class UserDao {
         return userDetails;
     }
 
+    /**
+     *
+     * @param uid
+     * @return
+     * @throws SQLException
+     */
     public static boolean deleteUserById(String uid) throws SQLException {
         ps2.setString(1, uid);
 
         return (ps2.executeUpdate() != 0);
     }
 
+    /**
+     *
+     * @return
+     * @throws SQLException
+     */
     public static ArrayList<String> getUserId() throws SQLException {
         ResultSet rs = st1.executeQuery("SELECT ADHAR_NO FROM USER_DETAILS");
         ArrayList<String> userIdList = new ArrayList<>();
@@ -92,6 +115,11 @@ public class UserDao {
         return userIdList;
     }
 
+    /**
+     *
+     * @return
+     * @throws SQLException
+     */
     public static ArrayList<UserDetails> getUserList() throws SQLException {
         ResultSet rs = st.executeQuery("SELECT * FROM USER_DETAILS");
         ArrayList<UserDetails> userList = new ArrayList<>();
@@ -110,6 +138,12 @@ public class UserDao {
         return userList;
     }
 
+    /**
+     *
+     * @param user
+     * @return
+     * @throws SQLException
+     */
     public static String validateUser(UserDto user) throws SQLException {
         ps.setString(1, user.getUserid());
         ps.setString(2, user.getPassword());

@@ -24,7 +24,7 @@ import org.apache.tomcat.util.http.fileupload.servlet.ServletRequestContext;
 
 /**
  *
- * @author vishal
+ * @author prashoo
  */
 public class UpdateUserControllerServlet extends HttpServlet {
 

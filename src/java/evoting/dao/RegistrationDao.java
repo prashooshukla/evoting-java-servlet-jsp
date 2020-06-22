@@ -12,7 +12,7 @@ import java.sql.SQLException;
 
 /**
  *
- * @author vishal
+ * @author prashoo
  */
 public class RegistrationDao {
 
@@ -28,12 +28,24 @@ public class RegistrationDao {
         }
     }
 
+    /**
+     *
+     * @param userid
+     * @return
+     * @throws SQLException
+     */
     public static boolean serachUser(String userid) throws SQLException {
 
         ps.setString(1, userid);
         return ps.executeQuery().next();
     }
 
+    /**
+     *
+     * @param user
+     * @return
+     * @throws SQLException
+     */
     public static boolean registerUser(UserDetails user) throws SQLException {
 
         ps1.setString(1, user.getUserid());

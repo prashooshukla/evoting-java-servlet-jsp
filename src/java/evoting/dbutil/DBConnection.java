@@ -11,7 +11,7 @@ import java.sql.SQLException;
  */
 /**
  *
- * @author vishal
+ * @author prashoo
  */
 public class DBConnection {
 
@@ -28,12 +28,17 @@ public class DBConnection {
         }
     }
 
+    /**
+     *
+     * @return
+     */
     public static Connection getConnection() {
         return conn;
     }
 
     /**
      *
+     * @throws SQLException
      */
     public static void closeConnection() throws SQLException {
         try {

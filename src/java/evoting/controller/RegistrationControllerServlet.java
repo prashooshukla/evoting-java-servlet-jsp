@@ -17,7 +17,7 @@ import javax.servlet.http.HttpServletResponse;
 
 /**
  *
- * @author vishal
+ * @author prashoo
  */
 public class RegistrationControllerServlet extends HttpServlet {
 

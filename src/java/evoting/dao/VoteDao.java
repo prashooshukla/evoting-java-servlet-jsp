@@ -19,7 +19,7 @@ import java.util.LinkedHashMap;
 
 /**
  *
- * @author vishal
+ * @author prashoo
  */
 public class VoteDao {
 
@@ -39,8 +39,11 @@ public class VoteDao {
         }
     }
     
-    
-    
+    /**
+     *
+     * @return
+     * @throws Exception
+     */
     public static LinkedHashMap<String,Integer> getResult()throws Exception{
         LinkedHashMap <String,Integer> result =new LinkedHashMap<>();
         ResultSet rs=ps4.executeQuery();
@@ -51,6 +54,11 @@ public class VoteDao {
         return result;
     }
     
+    /**
+     *
+     * @return
+     * @throws SQLException
+     */
     public static int getVoteCount() throws SQLException{
         ResultSet rs=st.executeQuery("SELECT COUNT(*) FROM VOTING");
         if(rs.next()){
@@ -59,12 +67,24 @@ public class VoteDao {
         return 0;
     }
     
+    /**
+     *
+     * @param vote
+     * @return
+     * @throws SQLException
+     */
     public static boolean addVote(VoteDto vote)throws SQLException{
         ps3.setString(1, vote.getCandidateId());
         ps3.setString(2, vote.getVoterId());
         return (ps3.executeUpdate()!=0);
     }
     
+    /**
+     *
+     * @param userid
+     * @return
+     * @throws SQLException
+     */
     public static String getCandidateId(String userid)throws SQLException{
         ps.setString(1, userid);
         ResultSet rs=ps.executeQuery();
@@ -77,6 +97,13 @@ public class VoteDao {
         }
     }
 
+    /**
+     *
+     * @param candidateid
+     * @return
+     * @throws SQLException
+     * @throws IOException
+     */
     public static CandidateDto getVote(String candidateid) throws SQLException, IOException {
         CandidateDto candidate = null;
         Blob blob;
